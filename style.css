@@ -46,30 +46,43 @@ h1 {
 }
 
 .resultado {
-    width: 300px;
     display: none;
     border: 1px dotted #FFF;
     margin-top: 20px;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
 }
 
 .titulo {
-    width: 100%;
     color: #FFF;
-    font-size: 25px;
-    font-weight: bold;
-    text-align: center;
-    padding: 20px;
+    padding: 1.5rem;
+    flex: 1;
+    min-width: 200px;
 }
-
+.titulo--cidade {
+    padding-top: 1rem;
+}
+.titulo--cidade i {
+    margin-right: 5px;
+}
+.titulo--data {
+    padding-bottom: 1rem;
+    font-size: 1.5rem;
+}
+.titulo--hora {
+    font-size: 4.5rem;
+    text-shadow: 3px 3px 2px #000;
+}
 .info {
     display: flex;
-    width: 100%;
+    flex: 1;
+    padding: 1rem;
+    border-left: 2px solid #eded00;
+    color: #FFF;
 }
 .info .temp {
     flex: 1;
-    text-align: center;
 }
 .info .vento {
     flex: 1;
@@ -81,7 +94,73 @@ h1 {
     font-size: 16px;
     margin-bottom: 5px;
 }
-.tempInfo,
+.clima {
+    flex: 1;
+    min-width: 135px;
+}
+.clima--nuvem,
+.clima--vento,
+.clima--umidade {
+    display: flex;
+}
+.clima--vento,
+.clima--umidade {
+    padding-top: 1rem;
+}
+.clima--info span {
+    display: block;
+}
+.clima--info span:first-child {
+    font-size: .9rem;
+}
+.clima--info span:last-child {
+    color: #eded00;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.clima--icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    font-size: 1.5rem;
+}
+.temp {
+    flex: 1;
+    padding-left: 2rem;
+}
+.temp--grau {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+    font-size: 3rem;
+    text-shadow: 3px 3px 2px #000;
+}
+.temp--grau img {
+    max-width: 80px;
+}
+.temp--grau sup {
+    font-size: 2rem;
+}
+.temp--min-max {
+    display: flex;
+}
+.temp--min-max div {
+    flex: 1;
+    text-align: center;
+}
+.temp--min-max span {
+    display: block;
+}
+.temp--min-max span:first-child {
+    color: #eded00;
+}
+.temp--min-max span:last-child {
+    margin-top: .5rem;
+    font-size: 1.5rem;
+}
+/* .tempInfo,
 .ventoInfo {
     color: #FFF;
     font-size: 30px;
@@ -94,7 +173,7 @@ h1 {
 .ventoInfo span {
     font-size: 15px;
     font-weight: normal;
-}
+} */
 .ventoArea {
     width: 50px;
     height: 50px;

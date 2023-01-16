@@ -1,5 +1,7 @@
 document.querySelector('.busca').addEventListener('submit',async (event)=>{
     event.preventDefault();
+    let dt = new Date();
+    console.log(dt);
 
     let input = document.querySelector('#searchInput').value;
 
@@ -17,6 +19,9 @@ document.querySelector('.busca').addEventListener('submit',async (event)=>{
                 name: json.name,
                 country: json.sys.country,
                 temp: json.main.temp,
+                tempMin: json.main.temp_min,
+                tempMax: json.main.temp_max,
+                umidade: json.main.humidity,
                 tempIcon: json.weather[0].icon,
                 tempDesc: json.weather[0].description,
                 windSpeed: json.wind.speed,
@@ -34,17 +39,23 @@ document.querySelector('.busca').addEventListener('submit',async (event)=>{
 
 function showInfo(json) {
     showWarning('');
+
+    document.querySelector('.resultado').style.display = 'flex';
+
+
+    document.querySelector('.titulo--cidade span').innerHTML = `${json.name}, ${json.country}`;
     
-    
-    document.querySelector('.titulo').innerHTML = `${json.name}, ${json.country}`;
-    document.querySelector('.tempInfo').innerHTML = `${json.temp} <sup>ºC</sup>`;
-    document.querySelector('.ventoInfo').innerHTML = `${json.windSpeed} <span>km/h</span>`;
+
+    document.querySelector('.temp--grau span').innerHTML = `${json.temp.toFixed(1)}<sup>ºC</sup>`;
+    document.querySelector('.temp--min span:last-child').innerHTML = `${json.tempMin.toFixed(1)}<sup>ºC</sup>`
+    document.querySelector('.temp--max span:last-child').innerHTML = `${json.tempMax.toFixed(1)}<sup>ºC</sup>`
+
+    document.querySelector('.clima--vento span:last-child').innerHTML = `${json.windSpeed.toFixed(0)} km/h`;
+    document.querySelector('.clima--umidade span:last-child').innerHTML = `${json.umidade.toFixed(0)}%`;
     document.querySelector('.temp img').src = `http://openweathermap.org/img/wn/${json.tempIcon}@2x.png`;
     document.querySelector('.temp img').title = json.tempDesc;
 
-    document.querySelector('.ventoPonto').style.transform = `rotate(${(json.windAngle - 90)}deg)`;
-
-    document.querySelector('.resultado').style.display = 'block';
+    // document.querySelector('.ventoPonto').style.transform = `rotate(${(json.windAngle - 90)}deg)`;
 }
 function clearInfo() {
     showWarning('');
